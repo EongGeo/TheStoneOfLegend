@@ -290,7 +290,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 196039399}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -555,7 +555,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 549498711}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1004,7 +1004,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 760085842}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -1223,7 +1223,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "<GUIDE>\n\nMove :  wasd  OR   \u2191\u2190\u2193\u2192\n\nStone throwing
-    : space key\n\n<MISSION>\n\nDefeat all Enemies on the Stage!"
+    : space key\n\n\"Each time you level up, \nyou gain stat points equal to your
+    level.\"\n\n<MISSION>\n\nDefeat all Enemies on the Stage!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: efcf8e758e227654fba9c9ea2b12f939, type: 2}
   m_sharedMaterial: {fileID: 7527147858672670646, guid: efcf8e758e227654fba9c9ea2b12f939, type: 2}
@@ -1431,7 +1432,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1069257978}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
