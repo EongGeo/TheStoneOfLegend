@@ -6,7 +6,10 @@ using UnityEngine;
 public class Managers
 {
     private static GameObject _root;
-    private static SoundManager _sound;
+    private static GameManager _game;
+    private static StageManager _stage;
+    private static PoolManager _pool;
+    private static SpawnManager _spawn;
 
     private static void Init()
     {
@@ -31,12 +34,36 @@ public class Managers
             obj.transform.SetParent(_root.transform);
         }
     }
-    public static SoundManager Sound
+    public static GameManager Game
     {
         get
         {
-            CreateManager(ref _sound, "SoundManager");
-            return _sound;
+            CreateManager(ref _game, "GameManager");
+            return _game;
+        }
+    }
+    public static StageManager Stage
+    {
+        get
+        {
+            CreateManager(ref _stage, "StageManager");
+            return _stage;
+        }
+    }
+    public static PoolManager Pool
+    {
+        get
+        {
+            CreateManager(ref _pool, "PoolManager");
+            return _pool;
+        }
+    }
+    public static SpawnManager  Spawn
+    {
+        get
+        {
+            CreateManager(ref _spawn, "StageManager");
+            return _spawn;
         }
     }
 }

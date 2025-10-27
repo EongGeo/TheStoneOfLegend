@@ -16,8 +16,9 @@ public class SoundManager : MonoBehaviour
 
     [Header("SFX")]
     public AudioClip buttonClickSFX;
+    public AudioClip buttonClick2SFX;
     public AudioClip stoneThrowingSFX;
-    public AudioClip stoneHitSFX;
+    public AudioClip enemyHitSFX;
     public AudioClip playerHitSFX;
     public AudioClip gameOverSFX;
     public AudioClip stageClearSFX;
@@ -28,7 +29,6 @@ public class SoundManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-
         }
         else
         {
@@ -39,6 +39,30 @@ public class SoundManager : MonoBehaviour
     public void PlayButtonClickSFX() 
     {
         sfxSource.PlayOneShot(buttonClickSFX);
+    }
+    public void PlayButton2ClickSFX()
+    {
+        sfxSource.PlayOneShot(buttonClick2SFX);
+    }
+    public void PlayStoneThrowingSFX()
+    {
+        sfxSource.PlayOneShot(stoneThrowingSFX);
+    }
+    public void PlayEnemyHitSFX()
+    {
+        sfxSource.PlayOneShot(enemyHitSFX);
+    }
+    public void PlayPlayerHitSFX()
+    {
+        sfxSource.PlayOneShot(playerHitSFX);
+    }
+    public void PlayStageClearSFX()
+    {
+        sfxSource.PlayOneShot(stageClearSFX);
+    }
+    public void PlayGameOverSFX()
+    {
+        sfxSource.PlayOneShot(gameOverSFX);
     }
 
     public void PlayNormalBGM()
