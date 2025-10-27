@@ -1387,8 +1387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 27, y: 19}
-  m_SizeDelta: {x: 314.4908, y: 97.9264}
+  m_AnchoredPosition: {x: 17, y: -24}
+  m_SizeDelta: {x: 314.4908, y: 89.429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427889100
 MonoBehaviour:
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -58.577393, y: 0, z: -63.9021, w: 0}
+  m_margin: {x: -58.577393, y: 0, z: -0.15698242, w: 36.029694}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3244,7 +3244,7 @@ GameObject:
   - component: {fileID: 958712967}
   - component: {fileID: 958712966}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: UIManager_Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3274,8 +3274,8 @@ MonoBehaviour:
   maxHpValue: {fileID: 2130042731}
   speedValue: {fileID: 1672060248}
   statPointsValue: {fileID: 1848930663}
-  stage2Locked: {fileID: 289514833}
-  stage3Locked: {fileID: 629372965}
+  stage2Locked: {fileID: 289514831}
+  stage3Locked: {fileID: 629372963}
   saveResultText: {fileID: 427889100}
   stageResultPanel: {fileID: 0}
   rewardText: {fileID: 0}
@@ -3783,7 +3783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1229629670
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3801,8 +3801,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 700.26, y: -243}
-  m_SizeDelta: {x: -1400.5161, y: -886.6387}
+  m_AnchoredPosition: {x: 722.74, y: -294.96594}
+  m_SizeDelta: {x: -1445.5, y: -990.5706}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1229629671
 MonoBehaviour:

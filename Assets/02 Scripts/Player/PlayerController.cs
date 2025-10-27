@@ -5,8 +5,10 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("¿Ãµø")]
-    [SerializeField] private float moveSpeed = 5.0f;
+    public int Str {  get; set; }
+    public int MaxHp { get; set; }
+    public float Speed { get; set; }
+
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
@@ -17,13 +19,14 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        ApplyPlayerData(Managers.Game.playerData);
     }
-    void Start()
+    private void Start()
     {
 
     }
 
-    void Update()
+    private void Update()
     {
         inputX = Input.GetAxis("Horizontal");
         inputY = Input.GetAxis("Vertical");
@@ -53,6 +56,12 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        rb.velocity = new Vector2(inputX * moveSpeed, inputY * moveSpeed);
+        rb.velocity = new Vector2(inputX * Speed, inputY * Speed);
+    }
+    public void ApplyPlayerData(PlayerData data)
+    {
+        Str = data.playerStr;
+        MaxHp = data.playerMaxHp;
+        Speed = data.playerSpeed;
     }
 }

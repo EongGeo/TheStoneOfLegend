@@ -1021,14 +1021,15 @@ MonoBehaviour:
   bgmSource: {fileID: 240437989}
   sfxSource: {fileID: 1919791765}
   mainMenuBGM: {fileID: 0}
-  normalBGM: {fileID: 0}
-  stageBGM: {fileID: 0}
+  normalBGM: {fileID: 8300000, guid: f8f46c6f486d20d4e80e950826f5493c, type: 3}
+  stageBGM: {fileID: 8300000, guid: f24cd59caaf194c458e7f271b10fc749, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 0e0da224e9c683c459fff5f706a9b01d, type: 3}
-  stoneThrowingSFX: {fileID: 0}
-  stoneHitSFX: {fileID: 0}
+  buttonClick2SFX: {fileID: 8300000, guid: 11adb7be1970441449e22202a025e835, type: 3}
+  stoneThrowingSFX: {fileID: 8300000, guid: 057787a55810528498f718b623afb88f, type: 3}
+  enemyHitSFX: {fileID: 8300000, guid: f9d1c3958b4bacc47bc1756a73966711, type: 3}
   playerHitSFX: {fileID: 0}
-  gameOverSFX: {fileID: 0}
-  stageClearSFX: {fileID: 0}
+  gameOverSFX: {fileID: 8300000, guid: 78cf9b72078118041b8db43db6a223d4, type: 3}
+  stageClearSFX: {fileID: 8300000, guid: 02f5a9061746a204fa17129c59af52db, type: 3}
 --- !u!4 &662392459
 Transform:
   m_ObjectHideFlags: 0
@@ -2880,7 +2881,7 @@ GameObject:
   - component: {fileID: 1832443957}
   - component: {fileID: 1832443956}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: UIManager_MainMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2900,6 +2901,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 2100388465}
   helpPanel: {fileID: 1553608510}
+  playerStatPanel: {fileID: 0}
+  stagePanel: {fileID: 0}
+  saveResultPanel: {fileID: 0}
+  mainMenuPanel: {fileID: 0}
+  playerLevelValue: {fileID: 0}
+  expPercentage: {fileID: 0}
+  strValue: {fileID: 0}
+  maxHpValue: {fileID: 0}
+  speedValue: {fileID: 0}
+  statPointsValue: {fileID: 0}
+  stage2Locked: {fileID: 0}
+  stage3Locked: {fileID: 0}
+  saveResultText: {fileID: 0}
+  stageResultPanel: {fileID: 0}
+  rewardText: {fileID: 0}
 --- !u!4 &1832443957
 Transform:
   m_ObjectHideFlags: 0
