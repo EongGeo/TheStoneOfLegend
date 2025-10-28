@@ -4,15 +4,18 @@ using UnityEngine;
 
 public abstract class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public int Atk {  get; private set; }
+    public int Hp { get; private set; }
+    public float Speed { get; private set; }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(int str)
     {
-        
+        Hp -= str;
     }
+    public void Die()
+    {
+        if (Hp <= 0) Managers.Spawn.EnemyDie();
+    }
+    protected abstract void Attack();
+    protected abstract void Move();
 }

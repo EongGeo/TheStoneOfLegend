@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public class Managers
@@ -58,11 +57,11 @@ public class Managers
             return _pool;
         }
     }
-    public static SpawnManager  Spawn
+    public static SpawnManager Spawn
     {
         get
         {
-            CreateManager(ref _spawn, "StageManager");
+            CreateManager(ref _spawn, "SpawnManager");
             return _spawn;
         }
     }

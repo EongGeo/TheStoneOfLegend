@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
     public int Str {  get; set; }
-    public int MaxHp { get; set; }
+    public int Hp { get; set; }
     public float Speed { get; set; }
 
 
@@ -61,7 +60,7 @@ public class PlayerController : MonoBehaviour
     public void ApplyPlayerData(PlayerData data)
     {
         Str = data.playerStr;
-        MaxHp = data.playerMaxHp;
+        Hp = data.playerMaxHp;
         Speed = data.playerSpeed;
     }
 }
