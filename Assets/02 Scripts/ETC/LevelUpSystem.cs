@@ -14,6 +14,7 @@ public static class LevelUpSystem
         {
             exp -= expRequirement;
             level++;
+            Managers.Game.playerData.playerStatPoints += level;
         }
     }
     public static string ReturnExpPercentage(int level, int exp)

@@ -2,9 +2,12 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance {  get; private set; }
+
     [Header("메인메뉴씬")]
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private GameObject helpPanel;
@@ -27,7 +30,13 @@ public class UIManager : MonoBehaviour
     [Header("스테이지씬")]
     [SerializeField] private GameObject stageResultPanel;
     [SerializeField] private TextMeshProUGUI rewardText;
+    [SerializeField] private TextMeshProUGUI stageClearText;
+    [SerializeField] private GameObject nextStageButton;
 
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         UpdateGameSceneUI();
@@ -132,22 +141,22 @@ public class UIManager : MonoBehaviour
     //스테이지1버튼
     public void OnClickStage1Button()
     {
-        Managers.Stage.ChooseStage(1);
         SceneManager.LoadScene("StageScene");
+        Managers.Stage.ChooseStage(1);
     }
     //스테이지2버튼
     public void OnClickStage2Button()
     {
         if(Managers.Game.playerData.stageClearNum < 1) return;
-        Managers.Stage.ChooseStage(2);
         SceneManager.LoadScene("StageScene");
+        Managers.Stage.ChooseStage(2);
     }
     //스테이지3버튼
     public void OnClickStage3Button()
     {
         if (Managers.Game.playerData.stageClearNum < 2) return;
-        Managers.Stage.ChooseStage(3);
         SceneManager.LoadScene("StageScene");
+        Managers.Stage.ChooseStage(3);
     }
     //세이브버튼
     public void OnClickSaveButton()
@@ -176,6 +185,7 @@ public class UIManager : MonoBehaviour
     //스테이지아웃버튼
     public void OnClickStageOutButton()
     {
+        stageResultPanel.SetActive(false);
         SoundManager.Instance.PlayNormalBGM();
         SceneManager.LoadScene("GameScene");
     }
@@ -184,5 +194,23 @@ public class UIManager : MonoBehaviour
     {
         stageResultPanel.SetActive(false);
         Managers.Stage.NextStage();
+    }
+    //스테이지결과받기
+    public void GetStageResult(bool isClear)
+    {
+        if (isClear)
+        {
+            stageResultPanel.SetActive(true);
+            stageClearText.text = "STAGE CLEAR";
+            rewardText.text = $"EXP + {Managers.Stage.CurStage * 100}";
+            if(Managers.Stage.CurStage == 3) nextStageButton.SetActive(false);
+        }
+        else
+        {
+            stageResultPanel.SetActive(true);
+            stageClearText.text = "GAME OVER";
+            rewardText.text = "";
+            nextStageButton.SetActive(false);
+        }
     }
 }
