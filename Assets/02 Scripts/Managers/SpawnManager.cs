@@ -31,6 +31,22 @@ public class SpawnManager : MonoBehaviour
             Managers.Stage.StageClear();
         }
     }
+    public void InitSpawn()
+    {
+        EnemyCount = 0;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null) Destroy(player);
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (enemies != null)
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+        }
+    }
     public void ConnectSpawner(int stageNum)
     {
         StartCoroutine(WakeUp(stageNum));
@@ -39,5 +55,8 @@ public class SpawnManager : MonoBehaviour
     {
         yield return null; //Spawner 일어날 시간 벌기 -> Spawner의 Awake보다 메서드 실행이 빨라 null참조오류가 발생하는 것으로 추정하여 추가
         Spawner.Instance.StageSpawn(stageNum);
+
+        float temp = (float)(Managers.Stage.CurStage - 1) * 50;
+        Camera.main.transform.position = new Vector3(temp, 0.0f, -10.0f);
     }
 }

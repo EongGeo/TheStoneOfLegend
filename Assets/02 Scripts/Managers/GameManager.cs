@@ -60,7 +60,9 @@ public class GameManager : MonoBehaviour
     {
         if (playerData.playerStatPoints <= 0) return;
 
-        playerData.playerSpeed += 0.1f;
+        float temp = playerData.playerSpeed + 0.1f;
+        temp = Mathf.Round(temp * 10.0f) / 10.0f; //뒤에 소수부분이 9999999 나오는 현상 해결을 위한 반올림
+        playerData.playerSpeed = temp;
         playerData.playerStatPoints--;
     }
 }
