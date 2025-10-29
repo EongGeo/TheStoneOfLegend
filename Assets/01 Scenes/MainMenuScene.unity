@@ -2916,6 +2916,8 @@ MonoBehaviour:
   saveResultText: {fileID: 0}
   stageResultPanel: {fileID: 0}
   rewardText: {fileID: 0}
+  stageClearText: {fileID: 0}
+  nextStageButton: {fileID: 0}
 --- !u!4 &1832443957
 Transform:
   m_ObjectHideFlags: 0

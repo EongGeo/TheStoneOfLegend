@@ -570,8 +570,9 @@ MonoBehaviour:
   stage2SpawnPoints: {fileID: 91812041}
   stage3SpawnPoints: {fileID: 1282134650}
   playerPrefab: {fileID: 4681155283289334690, guid: 72f5f30dccc27724cabe8b330ecf257e, type: 3}
-  monsterPrefab: {fileID: 2954868152258000372, guid: 73a9beca5d44bb5469655350c27b11dd, type: 3}
-  bossPrefab: {fileID: 2954868152258000372, guid: 73a9beca5d44bb5469655350c27b11dd, type: 3}
+  meleeMonsterPrefab: {fileID: 2954868152258000372, guid: 73a9beca5d44bb5469655350c27b11dd, type: 3}
+  rangedMonsterPrefab: {fileID: 8835618874354821584, guid: 75fa274fe58cd6645825b492f896f588, type: 3}
+  bossPrefab: {fileID: 5904382141921080675, guid: 572c6d14c778ff047915ad98ed32b21d, type: 3}
 --- !u!4 &349916789
 Transform:
   m_ObjectHideFlags: 0
@@ -21682,7 +21683,7 @@ GameObject:
   - component: {fileID: 843489212}
   m_Layer: 6
   m_Name: Wall3
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25735,7 +25736,7 @@ GameObject:
   - component: {fileID: 883604618}
   m_Layer: 6
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30291,7 +30292,7 @@ GameObject:
   - component: {fileID: 1373788064}
   m_Layer: 6
   m_Name: Wall2
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -34471,7 +34472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1480716748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35310,7 +35311,7 @@ MonoBehaviour:
   stageResultPanel: {fileID: 1480716747}
   rewardText: {fileID: 1249653566}
   stageClearText: {fileID: 1535085270}
-  nextStageButton: {fileID: 0}
+  nextStageButton: {fileID: 1643199961}
 --- !u!4 &1840397221
 Transform:
   m_ObjectHideFlags: 0

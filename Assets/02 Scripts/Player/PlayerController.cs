@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int Str {  get; set; }
-    public int Hp { get; set; }
-    public float Speed { get; set; }
+    [SerializeField] private PlayerProjectile stonePrefab;
 
+    public int Hp { get; private set; }
+    public float Speed { get; private set; }
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
 
     private float inputX, inputY;
+    private float throwingCooltime = 0.3f;
+    private bool canThrowing = true;
 
     private void Awake()
     {
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-
+        Managers.Pool.CreatePool(stonePrefab, 10);
     }
 
     private void Update()
@@ -41,26 +43,53 @@ public class PlayerController : MonoBehaviour
                 spriteRenderer.flipX = false;
             }
         }
-        if (inputY != 0)
+
+        if(Input.GetKeyDown(KeyCode.Space) && canThrowing)
         {
-            if (inputY < 0)
-            {
-                spriteRenderer.flipY = true;
-            }
-            else
-            {
-                spriteRenderer.flipY = false;
-            }
+            StartCoroutine(StoneThrowing());
         }
     }
     private void FixedUpdate()
     {
         rb.velocity = new Vector2(inputX * Speed, inputY * Speed);
     }
-    public void ApplyPlayerData(PlayerData data)
+    private IEnumerator StoneThrowing()
     {
-        Str = data.playerStr;
+        SoundManager.Instance.PlayStoneThrowingSFX();
+
+        PlayerProjectile stone = Managers.Pool.GetFromPool(stonePrefab);
+        stone.transform.SetPositionAndRotation(transform.position, Quaternion.identity);
+
+        canThrowing = false;
+        yield return new WaitForSeconds(throwingCooltime);
+        canThrowing = true;
+    }
+    private void ApplyPlayerData(PlayerData data)
+    {
         Hp = data.playerMaxHp;
         Speed = data.playerSpeed;
+    }
+    private void TakeDamage(int atk)
+    {
+        Hp -= atk;
+        if (Hp <= 0) Die();
+    }
+    private void Die()
+    {
+        Managers.Stage.GameOver();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (collision.gameObject.TryGetComponent<Enemy>(out Enemy enemy))
+            {
+                TakeDamage(enemy.Atk);
+            }
+            if (collision.gameObject.TryGetComponent<EnemyProjectile>(out EnemyProjectile enemyProjectile))
+            {
+                TakeDamage(enemyProjectile.Atk);
+            }
+        }
     }
 }

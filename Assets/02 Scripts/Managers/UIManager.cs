@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -198,6 +199,12 @@ public class UIManager : MonoBehaviour
     //스테이지결과받기
     public void GetStageResult(bool isClear)
     {
+        /*
+        버튼에 자동 포커스가 되어 스페이스바(공격)를 눌렀을때 버튼이 실행됨.
+        따라서 아래의 코드를 추가하여 수정.
+         */
+        EventSystem.current.SetSelectedGameObject(null);
+
         if (isClear)
         {
             stageResultPanel.SetActive(true);
