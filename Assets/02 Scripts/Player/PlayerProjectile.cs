@@ -7,6 +7,7 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private float speed = 6.0f;
     [SerializeField] private float lifetime = 1.5f;
 
+    private Vector2 moveDir;
     private float spawnTime;
     public int Atk { get; private set; }
 
@@ -18,7 +19,7 @@ public class PlayerProjectile : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(moveDir * speed * Time.deltaTime);
 
         if (Time.time - spawnTime >= lifetime)
         {
@@ -31,6 +32,10 @@ public class PlayerProjectile : MonoBehaviour
         {
             Managers.Pool.ReturnPool(this);
         }
+    }
+    public void SetDirection(Vector2 dir)
+    {
+        moveDir = dir.normalized;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bcc0de02c33df2438f90341c9296aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySmallPjtPrefab: {fileID: 0}
+  enemySmallPjtPrefab: {fileID: 3929806056317866657, guid: 67da531ba75d8e24abb2894e11aee6a6, type: 3}
   enemyBigPjtPrefab: {fileID: 0}

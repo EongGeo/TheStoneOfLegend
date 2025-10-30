@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stonePrefab: {fileID: 7798989402070212173, guid: 790b9987d2cb92e43bfb377e87b2c715, type: 3}
+  pushForce: 7
 --- !u!61 &4296690111387164622
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -210,7 +210,8 @@ public class UIManager : MonoBehaviour
             stageResultPanel.SetActive(true);
             stageClearText.text = "STAGE CLEAR";
             rewardText.text = $"EXP + {Managers.Stage.CurStage * 100}";
-            if(Managers.Stage.CurStage == 3) nextStageButton.SetActive(false);
+            nextStageButton.SetActive(true);
+            if (Managers.Stage.CurStage == 3) nextStageButton.SetActive(false);
         }
         else
         {
