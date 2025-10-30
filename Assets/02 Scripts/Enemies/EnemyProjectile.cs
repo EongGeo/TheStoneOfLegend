@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 6.0f;
-    [SerializeField] private float lifetime = 1.5f;
+    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float lifetime = 2.0f;
 
+    private Vector2 moveDir;
     private float spawnTime;
     public int Atk { get; private set; }
 
@@ -17,7 +18,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        transform.Translate(moveDir * speed * Time.deltaTime);
 
         if (Time.time - spawnTime >= lifetime)
         {

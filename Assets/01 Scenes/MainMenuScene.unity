@@ -321,7 +321,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1020,14 +1020,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 240437989}
   sfxSource: {fileID: 1919791765}
-  mainMenuBGM: {fileID: 0}
+  mainMenuBGM: {fileID: 8300000, guid: 20e7aa027c52d394bb46ef33583b6858, type: 3}
   normalBGM: {fileID: 8300000, guid: f8f46c6f486d20d4e80e950826f5493c, type: 3}
   stageBGM: {fileID: 8300000, guid: f24cd59caaf194c458e7f271b10fc749, type: 3}
   buttonClickSFX: {fileID: 8300000, guid: 0e0da224e9c683c459fff5f706a9b01d, type: 3}
   buttonClick2SFX: {fileID: 8300000, guid: 11adb7be1970441449e22202a025e835, type: 3}
   stoneThrowingSFX: {fileID: 8300000, guid: 057787a55810528498f718b623afb88f, type: 3}
   enemyHitSFX: {fileID: 8300000, guid: f9d1c3958b4bacc47bc1756a73966711, type: 3}
-  playerHitSFX: {fileID: 0}
+  playerHitSFX: {fileID: 8300000, guid: 213294bff9b2aea40b1e8d9e42a5500b, type: 3}
   gameOverSFX: {fileID: 8300000, guid: 78cf9b72078118041b8db43db6a223d4, type: 3}
   stageClearSFX: {fileID: 8300000, guid: 02f5a9061746a204fa17129c59af52db, type: 3}
 --- !u!4 &662392459
@@ -2998,7 +2998,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3343,6 +3343,6 @@ SceneRoots:
   - {fileID: 1678317825}
   - {fileID: 1803612480}
   - {fileID: 839261458}
-  - {fileID: 1638208709}
   - {fileID: 1832443957}
+  - {fileID: 1638208709}
   - {fileID: 662392459}
