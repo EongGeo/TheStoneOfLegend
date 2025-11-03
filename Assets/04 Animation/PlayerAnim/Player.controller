@@ -43,25 +43,25 @@ AnimatorStateMachine:
     m_Position: {x: 680, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8722196825673814725}
-    m_Position: {x: 400, y: -80, z: 0}
+    m_Position: {x: 400, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7462676257776879000}
-    m_Position: {x: 110, y: 260, z: 0}
+    m_Position: {x: 130, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4064424728523140073}
-    m_Position: {x: 390, y: 260, z: 0}
+    m_Position: {x: 350, y: 230, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7810130476404565997}
-    m_Position: {x: 280, y: 10, z: 0}
+    m_Position: {x: 300, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3415349277628489281}
-    m_Position: {x: 540, y: 10, z: 0}
+    m_Position: {x: 510, y: 0, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8021056778978259772}
-    m_Position: {x: 550, y: 200, z: 0}
+    m_Position: {x: 580, y: 170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 720700466901248887}
-    m_Position: {x: 820, y: 200, z: 0}
+    m_Position: {x: 800, y: 170, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
