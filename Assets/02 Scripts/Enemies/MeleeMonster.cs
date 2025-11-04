@@ -6,28 +6,34 @@ using UnityEngine;
 public class MeleeMonster : Enemy
 {
     public override int Atk { get; protected set; } = 5;
-    public override int Hp { get; protected set; } = 40;
+    public override int Hp { get; protected set; } = 50;
     public override float Speed { get; protected set; } = 2.0f;
 
     [SerializeField] private Transform player;
     [SerializeField] private GridBFS grid;
+
     // 벽만 감지하도록 레이어마스크 추가
     public LayerMask obstacleMask;
 
     private Vector3Int lastPlayerCell;
+    private Rigidbody2D rb;
+    private bool isAttacking = false;
 
-    void Awake()
+
+    private void Awake()
     {
-        grid = FindObjectOfType<GridBFS>();
+        grid = FindObjectOfType<GridBFS>(); //하나의 distanceMap 공유
         if (grid == null)
             Debug.LogError("MeleeMonster: GridManager를 씬에서 찾을 수 없습니다!");
 
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
         else Debug.LogError("MeleeMonster: Player 태그 오브젝트를 찾을 수 없습니다!");
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    private void Start()
     {
         if (grid == null || player == null) return;
 
@@ -45,7 +51,7 @@ public class MeleeMonster : Enemy
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (grid == null || player == null || grid.distanceMap == null) return;
 
@@ -56,11 +62,9 @@ public class MeleeMonster : Enemy
             lastPlayerCell = currentPlayerCell;
             grid.BuildDistanceMap(grid.ToIndex((Vector2Int)currentPlayerCell));
         }
-
-        MoveTowardsPlayer();
+        if (!isAttacking) Move();
     }
-
-    void MoveTowardsPlayer()
+    protected override void Move()
     {
         Vector3Int cell = grid.groundTilemap.WorldToCell(transform.position);
         Vector2Int pos = grid.ToIndex((Vector2Int)cell);
@@ -71,7 +75,7 @@ public class MeleeMonster : Enemy
         if (currentDist < 0)
         {
             Vector3 dirToPlayer = (player.position - transform.position).normalized;
-            TryMove(dirToPlayer);
+            TryMoveSmart(dirToPlayer);
             return;
         }
 
@@ -100,20 +104,38 @@ public class MeleeMonster : Enemy
             Vector3 targetWorld = grid.IndexToWorld(bestNext);
             Vector3 dir = (targetWorld - transform.position).normalized;
 
-            if (!TryMove(dir))
+            if (!TryMoveSmart(dir))
             {
                 Vector3 dirToPlayer = (player.position - transform.position).normalized;
-                TryMove(dirToPlayer);
+                TryMoveSmart(dirToPlayer);
             }
         }
         else
         {
             Vector3 dirToPlayer = (player.position - transform.position).normalized;
-            TryMove(dirToPlayer);
+            TryMoveSmart(dirToPlayer);
         }
     }
+    private bool TryMoveSmart(Vector3 dir)
+    {
+        Vector3[] evadeDirs = new Vector3[]
+        {
+            dir,
+            Quaternion.Euler(0, 0, 45) * dir,
+            Quaternion.Euler(0, 0, -45) * dir,
+            Quaternion.Euler(0, 0, 90) * dir,
+            Quaternion.Euler(0, 0, -90) * dir
+        };
 
-    bool TryMove(Vector3 dir)
+        foreach (var d in evadeDirs)
+        {
+            if (TryMove(d)) return true;
+        }
+
+        return false;
+    }
+
+    private bool TryMove(Vector3 dir)
     {
         CircleCollider2D col = GetComponent<CircleCollider2D>();
         if (col == null)
@@ -133,11 +155,6 @@ public class MeleeMonster : Enemy
             return true;
         }
         return false;
-    }
-
-    protected override void Move()
-    {
-
     }
     protected override void Attack()
     {
