@@ -213,9 +213,16 @@ public class PlayerController : MonoBehaviour
                 Vector2 pushDir = (transform.position - collision.transform.position).normalized;
                 StartCoroutine(PushPlayer(pushDir));
             }
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EnemyPjt"))
+        {
             if (collision.gameObject.TryGetComponent<EnemyProjectile>(out EnemyProjectile enemyProjectile))
             {
-                TakeDamage(enemyProjectile.Atk);
+                SoundManager.Instance.PlayPlayerHitSFX();
+                TakeDamage(enemyProjectile.atk);
             }
         }
     }

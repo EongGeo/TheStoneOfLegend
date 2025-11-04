@@ -6,10 +6,10 @@ public class EnemyProjectile : MonoBehaviour
 {
     [SerializeField] private float speed = 3.0f;
     [SerializeField] private float lifetime = 2.0f;
+    public int atk = 3;
 
     private Vector2 moveDir;
     private float spawnTime;
-    public int Atk { get; private set; }
 
     private void OnEnable()
     {

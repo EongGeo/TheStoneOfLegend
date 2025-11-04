@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     public static Spawner Instance { get; private set; }
 
+    [Header("스폰 포인트")]
     [SerializeField] private Transform stage1SpawnPoints;
     [SerializeField] private Transform stage2SpawnPoints;
     [SerializeField] private Transform stage3SpawnPoints;

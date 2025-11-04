@@ -57,6 +57,6 @@ public class SpawnManager : MonoBehaviour
         Spawner.Instance.StageSpawn(stageNum);
 
         float temp = (float)(Managers.Stage.CurStage - 1) * 50;
-        Camera.main.transform.position = new Vector3(temp, 0.0f, -10.0f);
+        Camera.main.transform.position = new Vector3(temp, 0.0f, -10.0f); //메인 카메라로 현재 스테이지를 비춤
     }
 }
