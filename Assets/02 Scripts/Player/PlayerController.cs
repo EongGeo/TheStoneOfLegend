@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
     public enum State { Idle, Attack, Walk}
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private StateMachine stateMachine;
     private Animator anim;
     private HpBar hpBar;
 
@@ -26,20 +25,18 @@ public class PlayerController : MonoBehaviour
     private Vector2 inputXY;
     private int maxHp;
 
+    private static readonly int moveXHash = Animator.StringToHash("MoveX");
+    private static readonly int moveYHash = Animator.StringToHash("MoveY");
+    private static readonly int isWalkingHash = Animator.StringToHash("IsWalking");
+    private static readonly int attackTriggerHash = Animator.StringToHash("Attack");
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        stateMachine = gameObject.AddComponent<StateMachine>();
         anim = GetComponent<Animator>();
 
         ApplyPlayerData(Managers.Game.playerData);
-
-        stateMachine.AddState(State.Idle, new IdleState(this));
-        stateMachine.AddState(State.Attack, new AttackState(this));
-        stateMachine.AddState(State.Walk, new WalkState(this));
-
-        stateMachine.InitState(State.Idle);
     }
     private void Start()
     {
@@ -63,117 +60,20 @@ public class PlayerController : MonoBehaviour
             if (inputX < 0) spriteRenderer.flipX = true;
             else if (inputX > 0) spriteRenderer.flipX = false;
         }
+
+        anim.SetFloat(moveXHash, lastMoveDir.x);
+        anim.SetFloat(moveYHash, lastMoveDir.y);
+        anim.SetBool(isWalkingHash, inputXY != Vector2.zero);
+
+        if (Input.GetKeyDown(KeyCode.Space) && canThrowing)
+        {
+            anim.SetTrigger(attackTriggerHash);
+            StartCoroutine(StoneThrowing());
+        }
     }
     private void FixedUpdate()
     {
         Move();
-    }
-    private string GetDirectionAnim(string baseName)
-    {
-        if (Mathf.Abs(lastMoveDir.y) > Mathf.Abs(lastMoveDir.x))
-        {
-            return lastMoveDir.y > 0 ? $"Up{baseName}" : $"Down{baseName}";
-        }
-        else
-        {
-            return $"Side{baseName}";
-        }
-    }
-    private class PlayerState : BaseState
-    {
-        protected PlayerController owner;
-
-        protected Rigidbody2D rb
-        {
-            get { return owner.rb; }
-        }
-        protected Animator anim
-        {
-            get { return owner.anim; }
-        }
-        protected float inputX
-        {
-            get { return owner.inputX; }
-        }
-        protected float inputY
-        {
-            get { return owner.inputY; }
-        }
-        protected bool canThrowing
-        {
-            get { return owner.canThrowing; }
-        }
-        protected string GetDirectionAnim(string baseName)
-        {
-            return owner.GetDirectionAnim(baseName);
-        }
-        protected void StoneThrowing()
-        {
-            owner.StartCoroutine(owner.StoneThrowing());
-        }
-        public PlayerState(PlayerController owner)
-        {
-            this.owner = owner;
-        }
-    }
-    private class IdleState : PlayerState
-    {
-        public IdleState(PlayerController owner) : base(owner) { }
-        public override void Enter()
-        {
-            rb.velocity = Vector2.zero;
-            anim.Play(GetDirectionAnim("Idle"));
-        }
-        public override void Transition()
-        {
-            if (Mathf.Abs(inputX) > 0 || Mathf.Abs(inputY) > 0)
-            {
-                ChangeState(State.Walk);
-            }
-            if (Input.GetKeyDown(KeyCode.Space) && canThrowing)
-            {
-                ChangeState(State.Attack);
-            }
-        }
-    }
-    private class AttackState : PlayerState
-    {
-        public AttackState(PlayerController owner) : base(owner) { }
-        public override void Enter()
-        {
-            StoneThrowing();
-            anim.Play(GetDirectionAnim("Attack"));
-        }
-        public override void Transition()
-        {
-            if (Mathf.Abs(inputX) > 0 || Mathf.Abs(inputY) > 0)
-            {
-                ChangeState(State.Walk);
-            }
-            if (inputX == 0 && inputY == 0)
-            {
-                ChangeState(State.Idle);
-            }
-        }
-    }
-    private class WalkState : PlayerState
-    {
-        public WalkState(PlayerController owner) : base(owner) { }
-        public override void Enter()
-        {
-            anim.Play(GetDirectionAnim("Walk"));
-        }
-        public override void Transition()
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && canThrowing)
-            {
-                ChangeState(State.Attack);
-            }
-            if (inputX == 0 && inputY == 0)
-            {
-                ChangeState(State.Idle);
-            }
-        }
     }
     private void Move()
     {
@@ -211,7 +111,6 @@ public class PlayerController : MonoBehaviour
     {
         hpBar.UpdateHp(Hp, maxHp);
     }
-
     private void Die()
     {
         Managers.Stage.GameOver();
