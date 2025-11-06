@@ -11,11 +11,7 @@ public static class SaveSystem
         try
         {
             string json = JsonUtility.ToJson(data, prettyPrint);
-
             File.WriteAllText(SavePath, json);
-
-            Debug.Log("저장완료 : " + SavePath);
-            Debug.Log(json);
 
             Managers.Game.SaveSuccess = true;
         }
@@ -30,17 +26,11 @@ public static class SaveSystem
     {
         if (!File.Exists(SavePath))
         {
-            data = PlayerData.GetDefault();
-            Debug.Log("저장 파일이 없으니 디폴트 로드");
+            data = PlayerData.GetDefault(); //저장파일 없으면 디폴트 로드
             return false;
         }
-
         string json = File.ReadAllText(SavePath);
-
         data = JsonUtility.FromJson<PlayerData>(json);
-
-        Debug.Log("불러오기 성공 : " + SavePath);
-        Debug.Log(json);
         return true;
     }
 }

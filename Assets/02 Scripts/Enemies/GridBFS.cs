@@ -28,15 +28,12 @@ public class GridBFS : MonoBehaviour
     {
         if (groundTilemap == null)
         {
-            Debug.LogError("GridManager: groundTilemap이 비어있습니다.");
             return;
         }
 
         BoundsInt bounds = groundTilemap.cellBounds;
         offset = new Vector2Int(bounds.xMin, bounds.yMin);
         distanceMap = new int[bounds.size.x, bounds.size.y];
-
-        Debug.Log($"[GridManager] Initialized offset={offset}, size={bounds.size}");
     }
 
     public Vector2Int WorldToIndex(Vector3 worldPos) //월드 좌표 → distanceMap 인덱스로 변환
@@ -107,7 +104,7 @@ public class GridBFS : MonoBehaviour
                 }
             }
         }
-        VisualizeDistanceMap();
+        //VisualizeDistanceMap();
     }
 
     public Vector3? GetValidSpawnPosition() //distanceMap 상에서 유효한 스폰 위치를 반환

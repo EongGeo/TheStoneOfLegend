@@ -13,7 +13,6 @@ public class AudioSettingSystem : MonoBehaviour
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "MainMenuScene")
@@ -44,14 +43,11 @@ public class AudioSettingSystem : MonoBehaviour
             }
         }
     }
-
-
     private void SetBGMVolume(float value)
     {
         mixer.SetFloat("BGMVolume", Mathf.Log10(value) * 20);
         PlayerPrefs.SetFloat("BGMVolume", value);
     }
-
     private void SetSFXVolume(float value)
     {
         mixer.SetFloat("SFXVolume", Mathf.Log10(value) * 20);

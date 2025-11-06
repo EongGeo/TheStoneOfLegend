@@ -15,7 +15,6 @@ public class EnemyProjectile : MonoBehaviour
     {
         spawnTime = Time.time;
     }
-
     private void Update()
     {
         transform.Translate(moveDir * speed * Time.deltaTime);
@@ -36,7 +35,6 @@ public class EnemyProjectile : MonoBehaviour
     {
         moveDir = dir.normalized;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") || collision.CompareTag("Wall"))

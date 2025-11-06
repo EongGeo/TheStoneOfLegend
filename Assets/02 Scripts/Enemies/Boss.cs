@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class Boss : Enemy
 {
-    [SerializeField] private EnemyProjectile enemySmallPjtPrefab;
-    [SerializeField] private EnemyProjectile enemyBigPjtPrefab;
     public override int Atk { get; protected set; } = 10;
     public override int Hp { get; protected set; } = 200;
     public override float Speed { get; protected set; } = 0.2f;
+
+    [SerializeField] private EnemyProjectile enemySmallPjtPrefab;
+    [SerializeField] private EnemyProjectile enemyBigPjtPrefab;
     [SerializeField] private Transform player;
     [SerializeField] private GridBFS grid;
     [SerializeField] private HpBar hpBarPrefab;
@@ -31,7 +32,6 @@ public class Boss : Enemy
 
         sr = GetComponent<SpriteRenderer>();
     }
-
     private void Start()
     {
         maxHp = Hp;
@@ -57,7 +57,6 @@ public class Boss : Enemy
             else { Destroy(gameObject); return; }
         }
     }
-
     private void Update()
     {
         if (grid == null || player == null || grid.distanceMap == null) return;

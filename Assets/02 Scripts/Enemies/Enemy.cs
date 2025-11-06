@@ -22,7 +22,6 @@ public abstract class Enemy : MonoBehaviour
     {
         hpBar.UpdateHp(Hp, maxHp);
     }
-
     protected void Die()
     {
         Managers.Spawn.EnemyDie();
@@ -52,7 +51,6 @@ public abstract class Enemy : MonoBehaviour
 
         return false;
     }
-
     protected bool TryMove(Vector3 dir)
     {
         CircleCollider2D col = GetComponent<CircleCollider2D>();

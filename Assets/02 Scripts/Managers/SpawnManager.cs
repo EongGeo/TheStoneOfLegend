@@ -5,7 +5,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public static SpawnManager Instance { get; private set; }
-
     public int EnemyCount {  get; private set; }
 
     private void Awake()

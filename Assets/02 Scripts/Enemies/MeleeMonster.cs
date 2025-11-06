@@ -24,7 +24,6 @@ public class MeleeMonster : Enemy
         if (p != null) player = p.transform;
         else Debug.LogError("MeleeMonster: Player 태그 오브젝트를 찾을 수 없습니다!");
     }
-
     private void Start()
     {
         maxHp = Hp;
@@ -47,7 +46,6 @@ public class MeleeMonster : Enemy
             else { Destroy(gameObject); return; }
         }
     }
-
     private void Update()
     {
         if (grid == null || player == null || grid.distanceMap == null) return;
@@ -115,7 +113,6 @@ public class MeleeMonster : Enemy
             TryMoveSmart(dirToPlayer);
         }
     }
-   
     protected override void Attack()
     {
         //별도의 공격패턴 없음

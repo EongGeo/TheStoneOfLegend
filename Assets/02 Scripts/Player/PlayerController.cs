@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public int Hp { get; private set; }
     public float Speed { get; private set; }
 
-    public enum State { Idle, Attack, Walk}
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private Animator anim;

@@ -28,13 +28,11 @@ public class GameManager : MonoBehaviour
     {
         if (SaveSystem.TryLoad(out PlayerData loaded))
         {
-            playerData = loaded;
-            Debug.Log("플레이어 데이터 로드 성공");
+            playerData = loaded; //저장된 파일 로드
         }
         else 
         {
-            playerData = loaded;
-            Debug.Log("디폴트 로드 성공");
+            playerData = loaded; //디폴트 로드
         }
     }
     public void AddExp(int rewardExp)

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class RangedMonster : Enemy
 {
-    [SerializeField] private EnemyProjectile enemySmallPjtPrefab;
-
     public override int Atk { get; protected set; } = 3;
     public override int Hp { get; protected set; } = 30;
     public override float Speed { get; protected set; } = 3.0f;
 
+    [SerializeField] private EnemyProjectile enemySmallPjtPrefab;
     [SerializeField] private Transform player;
     [SerializeField] private GridBFS grid;
     [SerializeField] private HpBar hpBarPrefab;
@@ -26,7 +25,6 @@ public class RangedMonster : Enemy
         if (p != null) player = p.transform;
         else Debug.LogError("RangedMonster: Player 태그 오브젝트를 찾을 수 없습니다!");
     }
-
     private void Start()
     {
         maxHp = Hp;
@@ -49,7 +47,6 @@ public class RangedMonster : Enemy
             else { Destroy(gameObject); return; }
         }
     }
-
     private void Update()
     {
         if (grid == null || player == null || grid.distanceMap == null) return;

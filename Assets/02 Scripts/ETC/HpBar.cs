@@ -13,12 +13,10 @@ public class HpBar : MonoBehaviour
     {
         target = targetTransform;
     }
-
     public void UpdateHp(float current, float max)
     {
         fillImage.fillAmount = Mathf.Clamp01(current / max);
     }
-
     private void LateUpdate()
     {
         if (target != null)
