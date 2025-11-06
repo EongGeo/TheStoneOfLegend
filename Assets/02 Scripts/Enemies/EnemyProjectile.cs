@@ -32,6 +32,10 @@ public class EnemyProjectile : MonoBehaviour
             Managers.Pool.ReturnPool(this);
         }
     }
+    public void SetDirection(Vector2 dir)
+    {
+        moveDir = dir.normalized;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

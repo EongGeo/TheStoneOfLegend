@@ -102,9 +102,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 5
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -148,8 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 074cda38edf1b664892f388f86d7bb97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
   enemySmallPjtPrefab: {fileID: 3929806056317866657, guid: 67da531ba75d8e24abb2894e11aee6a6, type: 3}
-  enemyBigPjtPrefab: {fileID: 0}
+  player: {fileID: 5485007978939190991, guid: 72f5f30dccc27724cabe8b330ecf257e, type: 3}
+  grid: {fileID: 5237286441072445191, guid: 308028faa3919254f975a481a6de3ec1, type: 3}
+  hpBarPrefab: {fileID: 2414472078218097363, guid: 2dfeefcc4b5cafd4882f72061bc12ba4, type: 3}
 --- !u!58 &7458417868373524901
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +164,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 8835618874354821584}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -184,4 +189,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.9

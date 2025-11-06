@@ -84,7 +84,10 @@ public class GridBFS : MonoBehaviour
         distanceMap[startCell.x, startCell.y] = 0;
         q.Enqueue(startCell);
 
-        Vector2Int[] dirs = { Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right };
+        Vector2Int[] dirs = { Vector2Int.up, Vector2Int.down,
+            Vector2Int.left, Vector2Int.right,
+            new Vector2Int(1, 1), new Vector2Int(-1, 1),
+            new Vector2Int(1, -1), new Vector2Int(-1, -1) };
 
         while (q.Count > 0)
         {
@@ -118,7 +121,6 @@ public class GridBFS : MonoBehaviour
         }
         return null;
     }
-
 
     private void VisualizeDistanceMap() //distanceMap을 타일맵에 색깔로 표시 (디버그용)
 

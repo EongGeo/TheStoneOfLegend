@@ -16,7 +16,6 @@ public class AudioSettingSystem : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 메인 메뉴 씬일 때만 슬라이더 찾기
         if (scene.name == "MainMenuScene")
         {
             Slider[] sliders = FindObjectsOfType<Slider>(true);
