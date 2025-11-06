@@ -14,10 +14,10 @@ public class PlayerProjectile : MonoBehaviour
     private void OnEnable()
     {
         Atk = Managers.Game.playerData.playerStr;
-        spawnTime = Time.time;
+        spawnTime = Time.time;;
     }
 
-    void Update()
+    private void Update()
     {
         transform.Translate(moveDir * speed * Time.deltaTime);
 
@@ -26,7 +26,7 @@ public class PlayerProjectile : MonoBehaviour
             ReturnPool();
         }
     }
-    void ReturnPool()
+    private void ReturnPool()
     {
         if (Managers.Pool != null)
         {

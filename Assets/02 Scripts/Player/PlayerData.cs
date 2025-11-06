@@ -19,7 +19,7 @@ public class PlayerData
             playerExp = 0,
             playerStr = 10,
             playerMaxHp = 10,
-            playerSpeed = 2.0f,
+            playerSpeed = 3.0f,
             playerStatPoints = 0,
             stageClearNum = 0
         };

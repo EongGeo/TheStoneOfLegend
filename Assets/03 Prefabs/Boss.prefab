@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.12, y: 6.05, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.4, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,11 +99,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 100
+  m_Mass: 10
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,7 +123,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 5904382141921080675}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -148,7 +148,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9
+  m_Radius: 0.85
 --- !u!114 &8331933501237045305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,5 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bcc0de02c33df2438f90341c9296aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
   enemySmallPjtPrefab: {fileID: 3929806056317866657, guid: 67da531ba75d8e24abb2894e11aee6a6, type: 3}
   enemyBigPjtPrefab: {fileID: 8231898478382752024, guid: 9715561e6e3a13b4e85d259c3789ae13, type: 3}
+  player: {fileID: 5485007978939190991, guid: 72f5f30dccc27724cabe8b330ecf257e, type: 3}
+  grid: {fileID: 5237286441072445191, guid: 308028faa3919254f975a481a6de3ec1, type: 3}
+  hpBarPrefab: {fileID: 2414472078218097363, guid: 2dfeefcc4b5cafd4882f72061bc12ba4, type: 3}

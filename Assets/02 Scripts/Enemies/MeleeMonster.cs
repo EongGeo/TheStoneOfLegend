@@ -11,30 +11,27 @@ public class MeleeMonster : Enemy
 
     [SerializeField] private Transform player;
     [SerializeField] private GridBFS grid;
-
-    // 벽만 감지하도록 레이어마스크 추가
-    public LayerMask obstacleMask;
+    [SerializeField] private HpBar hpBarPrefab;
 
     private Vector3Int lastPlayerCell;
-    private Rigidbody2D rb;
-    private bool isAttacking = false;
-
 
     private void Awake()
     {
         grid = FindObjectOfType<GridBFS>(); //하나의 distanceMap 공유
-        if (grid == null)
-            Debug.LogError("MeleeMonster: GridManager를 씬에서 찾을 수 없습니다!");
+        if (grid == null) Debug.LogError("MeleeMonster: GridManager를 씬에서 찾을 수 없습니다!");
 
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if (p != null) player = p.transform;
         else Debug.LogError("MeleeMonster: Player 태그 오브젝트를 찾을 수 없습니다!");
-
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void Start()
     {
+        maxHp = Hp;
+        hpBar = Instantiate(hpBarPrefab);
+        hpBar.Init(transform);
+        UpdateHpBar();
+
         if (grid == null || player == null) return;
 
         // 초기 거리맵 생성
@@ -62,7 +59,7 @@ public class MeleeMonster : Enemy
             lastPlayerCell = currentPlayerCell;
             grid.BuildDistanceMap(grid.ToIndex((Vector2Int)currentPlayerCell));
         }
-        if (!isAttacking) Move();
+        Move();
     }
     protected override void Move()
     {
@@ -83,8 +80,10 @@ public class MeleeMonster : Enemy
         int bestDist = currentDist;
 
         foreach (var dir in new Vector2Int[] {
-            new Vector2Int(1,0), new Vector2Int(-1,0),
-            new Vector2Int(0,1), new Vector2Int(0,-1)
+            Vector2Int.up, Vector2Int.down,
+            Vector2Int.left, Vector2Int.right,
+            new Vector2Int(1, 1), new Vector2Int(-1, 1),
+            new Vector2Int(1, -1), new Vector2Int(-1, -1)
         })
         {
             Vector2Int next = pos + dir;
@@ -116,48 +115,10 @@ public class MeleeMonster : Enemy
             TryMoveSmart(dirToPlayer);
         }
     }
-    private bool TryMoveSmart(Vector3 dir)
-    {
-        Vector3[] evadeDirs = new Vector3[]
-        {
-            dir,
-            Quaternion.Euler(0, 0, 45) * dir,
-            Quaternion.Euler(0, 0, -45) * dir,
-            Quaternion.Euler(0, 0, 90) * dir,
-            Quaternion.Euler(0, 0, -90) * dir
-        };
-
-        foreach (var d in evadeDirs)
-        {
-            if (TryMove(d)) return true;
-        }
-
-        return false;
-    }
-
-    private bool TryMove(Vector3 dir)
-    {
-        CircleCollider2D col = GetComponent<CircleCollider2D>();
-        if (col == null)
-        {
-            transform.position += dir * (Speed * Time.deltaTime);
-            return true;
-        }
-
-        float radius = col.radius * transform.localScale.x * 0.9f;
-        float distance = Speed * Time.deltaTime;
-
-        RaycastHit2D hit = Physics2D.CircleCast(transform.position, radius, dir, distance, obstacleMask);
-
-        if (hit.collider == null)
-        {
-            transform.position += dir * distance;
-            return true;
-        }
-        return false;
-    }
+   
     protected override void Attack()
     {
-
+        //별도의 공격패턴 없음
     }
+
 }

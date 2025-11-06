@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4164989693394718144}
   - component: {fileID: 4050227517812626128}
-  - component: {fileID: 4289501574317100745}
   - component: {fileID: 1932551838634988812}
   - component: {fileID: 6977199309669993433}
   - component: {fileID: 5256748051282862238}
+  - component: {fileID: -4592372711487773368}
   m_Layer: 0
   m_Name: MeleeMonster
   m_TagString: Enemy
@@ -88,33 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &4289501574317100745
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2954868152258000372}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 10
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!58 &1932551838634988812
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -124,7 +97,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 2954868152258000372}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -149,7 +122,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 1.6
+  m_Radius: 1.5
 --- !u!114 &6977199309669993433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,11 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b9dba42930770448f470d25b6149d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 5485007978939190991, guid: 72f5f30dccc27724cabe8b330ecf257e, type: 3}
-  grid: {fileID: 5237286441072445191, guid: 308028faa3919254f975a481a6de3ec1, type: 3}
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
+  player: {fileID: 5485007978939190991, guid: 72f5f30dccc27724cabe8b330ecf257e, type: 3}
+  grid: {fileID: 5237286441072445191, guid: 308028faa3919254f975a481a6de3ec1, type: 3}
+  hpBarPrefab: {fileID: 2414472078218097363, guid: 2dfeefcc4b5cafd4882f72061bc12ba4, type: 3}
 --- !u!95 &5256748051282862238
 Animator:
   serializedVersion: 5
@@ -188,3 +162,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &-4592372711487773368
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2954868152258000372}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 5
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 25ec87dced3c3a44aa14777939a6889c, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

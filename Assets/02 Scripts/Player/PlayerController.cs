@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private PlayerProjectile stonePrefab;
     [SerializeField] private float pushedForce = 7.0f;
+    [SerializeField] private HpBar hpBarPrefab;
 
     public int Hp { get; private set; }
     public float Speed { get; private set; }
@@ -15,12 +16,15 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private StateMachine stateMachine;
     private Animator anim;
+    private HpBar hpBar;
 
     private float inputX, inputY;
-    private float throwingCooltime = 0.3f;
+    private float throwingCooltime = 0.375f;
     private bool canThrowing = true;
     private bool isPushed = false;
     private Vector2 lastMoveDir = Vector2.up;
+    private Vector2 inputXY;
+    private int maxHp;
 
     private void Awake()
     {
@@ -39,18 +43,22 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        Managers.Pool.CreatePool(stonePrefab, 10);
+        Managers.Pool.CreatePool(stonePrefab, 20);
+        maxHp = Hp;
+        hpBar = Instantiate(hpBarPrefab);
+        hpBar.Init(transform);
+        UpdateHpBar();
     }
     private void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
 
-        Vector2 inputDir = new Vector2(inputX, inputY);
+        inputXY = new Vector2(inputX, inputY);
 
-        if (inputDir != Vector2.zero)
+        if (inputXY != Vector2.zero)
         {
-            lastMoveDir = inputDir.normalized;
+            lastMoveDir = inputXY.normalized;
 
             if (inputX < 0) spriteRenderer.flipX = true;
             else if (inputX > 0) spriteRenderer.flipX = false;
@@ -169,7 +177,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Move()
     {
-        if (!isPushed) rb.velocity = new Vector2(inputX * Speed, inputY * Speed);
+        if (!isPushed) rb.velocity = inputXY.normalized * Speed;
     }
     private IEnumerator StoneThrowing()
     {
@@ -196,11 +204,21 @@ public class PlayerController : MonoBehaviour
     private void TakeDamage(int atk)
     {
         Hp -= atk;
+        UpdateHpBar();
         if (Hp <= 0) Die();
     }
+    private void UpdateHpBar()
+    {
+        hpBar.UpdateHp(Hp, maxHp);
+    }
+
     private void Die()
     {
         Managers.Stage.GameOver();
+    }
+    private void OnDestroy()
+    {
+        if (hpBar != null) Destroy(hpBar.gameObject);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
